@@ -1,0 +1,70 @@
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: details-mem
+spec:
+  maxReplicas: 15
+  minReplicas: 1
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: details # deployment name
+  metrics:
+  - type: Resource
+    resource:
+      name: memory
+      targetAverageUtilization: 10
+
+---
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: ratings-mem
+spec:
+  maxReplicas: 15
+  minReplicas: 1
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: ratings # deployment name
+  metrics:
+  - type: Resource
+    resource:
+      name: memory
+      targetAverageUtilization: 10
+
+---
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: reviews-mem
+spec:
+  maxReplicas: 15
+  minReplicas: 1
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: reviews # deployment name
+  metrics:
+  - type: Resource
+    resource:
+      name: memory
+      targetAverageUtilization: 10
+
+---
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: productpage-mem
+spec:
+  maxReplicas: 15
+  minReplicas: 1
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: productpage # deployment name
+  metrics:
+  - type: Resource
+    resource:
+      name: memory
+      targetAverageUtilization: 10

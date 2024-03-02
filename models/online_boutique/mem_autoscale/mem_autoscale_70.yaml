@@ -1,0 +1,199 @@
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: emailservice-mem
+spec:
+  maxReplicas: 10
+  minReplicas: 1
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: emailservice # deployment name
+  metrics:
+  - type: Resource
+    resource:
+      name: memory
+      targetAverageUtilization: 70
+
+---
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: checkoutservice-mem
+spec:
+  maxReplicas: 10
+  minReplicas: 1
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: checkoutservice # deployment name
+  metrics:
+  - type: Resource
+    resource:
+      name: memory
+      targetAverageUtilization: 70
+
+---
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: recommendationservice-mem
+spec:
+  maxReplicas: 10
+  minReplicas: 1
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: recommendationservice # deployment name
+  metrics:
+  - type: Resource
+    resource:
+      name: memory
+      targetAverageUtilization: 70
+
+---
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: frontend-mem
+spec:
+  maxReplicas: 30
+  minReplicas: 1
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: frontend # deployment name
+  metrics:
+  - type: Resource
+    resource:
+      name: memory
+      targetAverageUtilization: 70
+
+---
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: paymentservice-mem
+spec:
+  maxReplicas: 10
+  minReplicas: 1
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: paymentservice # deployment name
+  metrics:
+  - type: Resource
+    resource:
+      name: memory
+      targetAverageUtilization: 70
+
+---
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: productcatalogservice-mem
+spec:
+  maxReplicas: 10
+  minReplicas: 1
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: productcatalogservice # deployment name
+  metrics:
+  - type: Resource
+    resource:
+      name: memory
+      targetAverageUtilization: 70
+
+---
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: cartservice-mem
+spec:
+  maxReplicas: 10
+  minReplicas: 1
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: cartservice # deployment name
+  metrics:
+  - type: Resource
+    resource:
+      name: memory
+      targetAverageUtilization: 70
+
+---
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: currencyservice-mem
+spec:
+  maxReplicas: 10
+  minReplicas: 1
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: currencyservice # deployment name
+  metrics:
+  - type: Resource
+    resource:
+      name: memory
+      targetAverageUtilization: 70
+
+---
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: shippingservice-mem
+spec:
+  maxReplicas: 10
+  minReplicas: 1
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: shippingservice # deployment name
+  metrics:
+  - type: Resource
+    resource:
+      name: memory
+      targetAverageUtilization: 70
+
+---
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: redis-mem
+spec:
+  maxReplicas: 10
+  minReplicas: 1
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: redis-cart # deployment name
+  metrics:
+  - type: Resource
+    resource:
+      name: memory
+      targetAverageUtilization: 70
+
+---
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: adservice-mem
+spec:
+  maxReplicas: 10
+  minReplicas: 1
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: adservice-cart # deployment name
+  metrics:
+  - type: Resource
+    resource:
+      name: memory
+      targetAverageUtilization: 70
+
+
+

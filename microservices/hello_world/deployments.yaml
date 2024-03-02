@@ -1,0 +1,52 @@
+##################################################################################################
+# Simple Web Server service
+##################################################################################################
+apiVersion: v1
+kind: Service
+metadata:
+  name: helloworld
+spec:
+  ports:
+  - name: http
+    port: 80
+    targetPort: 5000
+  selector:
+    app: helloworld
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: helloworld
+  labels:
+    app: helloworld
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: helloworld
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: helloworld
+        version: v1
+    spec:
+      containers:
+      - name: helloworld
+        image: gcr.io/vig-cloud/helloworld4
+        resources:
+          requests:
+            memory: "1900Mi"
+            cpu: "500m"
+        imagePullPolicy: IfNotPresent #Always
+        ports:
+        - containerPort: 5000
+      tolerations:
+      - key: dedicated
+        operator: Equal
+        value: app-tag
+        effect: NoSchedule
+      nodeSelector:
+        cloud.google.com/gke-nodepool: app-pool
+---

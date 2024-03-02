@@ -1,0 +1,63 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: ob-gateway
+spec:
+  selector:
+    istio: ingressgateway # use istio default controller
+  servers:
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+    - "*"
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: front-end
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - ob-gateway
+  http:
+  - match:
+    - uri:
+        exact: /
+    - uri:
+        prefix: /login
+    - uri:
+        prefix: /catalogue
+    - uri:
+        prefix: /category.html
+    - uri:
+        prefix: /detail.html
+    - uri:
+        prefix: /cart
+    - uri:
+        prefix: /basket.html
+    - uri:
+        prefix: /orders
+    - uri:
+        prefix: /css
+    - uri:
+        prefix: /js
+    - uri:
+        prefix: /img
+    - uri:
+        exact: /favicon.png
+    - uri:
+        exact: /favicon.ico
+    - uri:
+        exact: /topbar.html
+    - uri:
+        exact: /footer.html
+    - uri:
+        exact: /navbar.html
+    route:
+    - destination:
+        host: front-end
+        port:
+          number: 8079
